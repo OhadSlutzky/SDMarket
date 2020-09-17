@@ -1,8 +1,10 @@
 package SDMImprovedFacade;
 
-import generatedClasses.Location;
-import generatedClasses.SDMStore;
+import generatedClasses.*;
+import javafx.beans.binding.Bindings;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -13,7 +15,9 @@ public class Store {
     private String name;
     private Location storeLocation;
     private Map<Integer, StoreItem> itemsBeingSold;
+    private final Map<Integer, List<Discount>> storeDiscounts; // Integer -> IfYouBuyItemId, List<Discount> -> Discount associated with the item.
     private final List<Order> storeOrdersHistory;
+
 
     public Store(SDMStore inputStore){
         this.Id = inputStore.getId();
@@ -21,6 +25,36 @@ public class Store {
         this.name = inputStore.getName();
         this.storeLocation = inputStore.getLocation();
         storeOrdersHistory = new ArrayList<>();
+        this.storeDiscounts = generateNewDiscountsMap(inputStore);
+    }
+
+    private Map<Integer, List<Discount>> generateNewDiscountsMap(SDMStore inputStore) {
+        Map<Integer, List<Discount>> discountsMap = new HashMap<>();
+        Discount newDiscountToAdd;
+        for (SDMSell sdmSell : inputStore.getSDMPrices().getSDMSell()) {
+            if(inputStore.getSDMDiscounts() != null){
+                for (SDMDiscount discount : inputStore.getSDMDiscounts().getSDMDiscount()) {
+                    if(discount.getIfYouBuy().getItemId() == sdmSell.getItemId()) {
+                        newDiscountToAdd= new Discount(discount);
+                        newDiscountToAdd.setStoreIdOfDiscount(inputStore.getId());
+                        if(discountsMap.containsKey(sdmSell.getItemId())) {
+                            discountsMap.get(sdmSell.getItemId()).add(newDiscountToAdd);
+                        }
+                        else {
+                            ArrayList<Discount> discountsList = new ArrayList<>();
+                            discountsList.add(newDiscountToAdd);
+                            discountsMap.put(sdmSell.getItemId(), discountsList);
+                        }
+                    }
+                }
+            }
+        }
+
+        return discountsMap;
+    }
+
+    public Map<Integer, List<Discount>> getStoreDiscounts() {
+        return storeDiscounts;
     }
 
     public void setTotalOrdersRevenue(double totalOrdersRevenue) {
@@ -71,6 +105,8 @@ public class Store {
         return storeLocation;
     }
 
+
+
     public void setStoreLocation(Location storeLocation) {
         this.storeLocation = storeLocation;
     }
@@ -101,23 +137,16 @@ public class Store {
 
     @Override
     public String toString() {
-        StringBuilder storeInformation = new StringBuilder();
-        storeInformation.append("\n<><><><><>   Store - ").append(Id).append("  <><><><><>\n");
-        storeInformation.append("Store ID: ").append(Id).append("\n").append("Store Name: ").append(name).append("\n");
-        storeInformation.append("Store PPK: ").append(deliveryPpk).append("\n");
-        storeInformation.append("Total Orders Revenue: ").append(String.format("%.2f", totalOrdersRevenue)).append("\n\n");
-        storeInformation.append("Store Item List: ").append(itemsBeingSold.size()).append(" items\n");
-        storeInformation.append("\n-----  Store Items  -----\n\n");
-        itemsBeingSold.values().forEach(item -> storeInformation.append(item.toString()));
-        storeInformation.append("\n-----  Store Orders  -----\n\n");
+        return String.format("%d | %s", this.Id, this.name);
+    }
 
-        if(!storeOrdersHistory.isEmpty()) {
-            storeOrdersHistory.forEach(order -> storeInformation.append((order.toString())));
-        }
-        else{
-            storeInformation.append("\tThere are no orders that were made from this store.\n\n");
+    public int getTotalAmountOfDiscounts() {
+        int sumOfDiscounts = 0;
+
+        for (Integer itemId: storeDiscounts.keySet()) {
+            sumOfDiscounts += storeDiscounts.get(itemId).size();
         }
 
-        return storeInformation.toString();
+        return sumOfDiscounts;
     }
 }

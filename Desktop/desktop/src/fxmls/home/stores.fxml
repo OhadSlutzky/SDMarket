@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="mainRoot" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="700.0" prefWidth="935.0" style="-fx-border-color: #FFFFFF;" styleClass="anchor-pane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.StoresController">
+   <children>
+      <ScrollPane fx:id="storesScrollPane" fitToHeight="true" hbarPolicy="NEVER" layoutX="2.0" layoutY="2.0" prefHeight="698.0" prefWidth="180.0" style="-fx-background-color: #FFFFFF;" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.topAnchor="1.0">
+         <content>
+            <AnchorPane prefHeight="692.0" prefWidth="175.0">
+               <children>
+                  <VBox fx:id="storeCardsVBox" fillWidth="false" prefHeight="695.0" prefWidth="160.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <padding>
+                        <Insets bottom="10.0" left="15.0" right="10.0" top="10.0" />
+                     </padding>
+                  </VBox>
+               </children>
+            </AnchorPane>
+         </content>
+      </ScrollPane>
+      <TableView fx:id="itemsTableView" layoutX="193.0" layoutY="150.0" prefHeight="150.0" prefWidth="738.0" AnchorPane.leftAnchor="190.0">
+        <columns>
+          <TableColumn fx:id="itemsTableViewIdColumn" editable="false" minWidth="120.0" prefWidth="120.0" style="-fx-alignment: CENTER;" text="ID" />
+          <TableColumn fx:id="itemsTableViewNameColumn" editable="false" minWidth="120.0" prefWidth="120.0" style="-fx-alignment: CENTER;" text="Name" />
+            <TableColumn fx:id="itemsTableViewCategoryColumn" editable="false" minWidth="120.0" prefWidth="120.0" style="-fx-alignment: CENTER;" text="Category" />
+            <TableColumn fx:id="itemsTableViewPriceColumn" editable="false" minWidth="120.0" prefWidth="120.0" style="-fx-alignment: CENTER;" text="Price" />
+            <TableColumn fx:id="itemsTableViewAmountSoldColumn" editable="false" minWidth="120.0" prefWidth="120.0" style="-fx-alignment: CENTER;" text="Amount Sold" />
+        </columns>
+      </TableView>
+      <TableView fx:id="ordersTableView" layoutX="196.0" layoutY="333.0" prefHeight="150.0" prefWidth="736.0" AnchorPane.leftAnchor="190.0">
+         <columns>
+            <TableColumn fx:id="ordersTableViewIdColumn" editable="false" minWidth="100.0" prefWidth="100.0" style="-fx-alignment: CENTER;" text="ID" />
+            <TableColumn fx:id="ordersTableViewDateColumn" editable="false" minWidth="100.0" prefWidth="100.0" style="-fx-alignment: CENTER;" text="Date" />
+            <TableColumn fx:id="ordersTableViewTotalItemsColumn" editable="false" minWidth="100.0" prefWidth="100.0" style="-fx-alignment: CENTER;" text="Total Items" />
+            <TableColumn fx:id="ordersTableViewTotalItemsPriceColumn" editable="false" minWidth="100.0" prefWidth="100.0" style="-fx-alignment: CENTER;" text="Total Items Price" />
+            <TableColumn fx:id="ordersTableViewDeliveryCostColumn" editable="false" minWidth="100.0" prefWidth="100.0" style="-fx-alignment: CENTER;" text="Delivery Cost" />
+            <TableColumn fx:id="ordersTableViewTotalPriceColumn" editable="false" minWidth="100.0" prefWidth="100.0" style="-fx-alignment: CENTER;" text="Total Price" />
+            <TableColumn fx:id="ordersTableViewDestinationColumn" editable="false" minWidth="100.0" prefWidth="100.0" style="-fx-alignment: CENTER;" text="Destination" />
+         </columns>
+      </TableView>
+      <TableView fx:id="discountsTableView" layoutX="193.0" layoutY="519.0" onMouseClicked="#onMouseClickedDiscountsTableView" prefHeight="150.0" prefWidth="440.0" AnchorPane.leftAnchor="190.0">
+         <columns>
+            <TableColumn fx:id="discountsTableViewNameColumn" editable="false" maxWidth="110.0" minWidth="110.0" prefWidth="110.0" style="-fx-alignment: CENTER;" text="Name" />
+            <TableColumn fx:id="discountsTableViewIfYouBuyColumn" editable="false" maxWidth="110.0" minWidth="110.0" prefWidth="110.0" style="-fx-alignment: CENTER;" text="If You Buy" />
+            <TableColumn fx:id="discountsTableViewQuantityNeededColumn" editable="false" maxWidth="110.0" minWidth="110.0" prefWidth="110.0" style="-fx-alignment: CENTER;" text="Quantity Needed" />
+            <TableColumn fx:id="discountsTableViewThenYouGetColumn" editable="false" maxWidth="110.0" minWidth="110.0" prefWidth="110.0" style="-fx-alignment: CENTER;" text="Then You Get" />
+         </columns>
+      </TableView>
+      <HBox alignment="CENTER_LEFT" layoutX="249.0" layoutY="44.0" prefHeight="92.0" prefWidth="584.0" spacing="50.0">
+         <children>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label fx:id="ppkLabel" style="-fx-text-fill: #2a73ff;" text="0" textFill="#2a73ff">
+                     <font>
+                        <Font name="System Bold" size="26.0" />
+                     </font>
+                  </Label>
+                  <Label text="PPK" textFill="#e7e5e5" />
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label fx:id="totalRevenueLabel" style="-fx-text-fill: #26bfbc;" text="0" textFill="#26bfbc">
+                     <font>
+                        <Font name="System Bold" size="26.0" />
+                     </font>
+                  </Label>
+                  <Label text="Total Revenue" textFill="#e7e5e5" />
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label id="salesAvailableLabel" fx:id="salesLabel" style="-fx-text-fill: #fa5f7e;" text="0" textFill="#fa5f7e">
+                     <font>
+                        <Font name="System Bold" size="26.0" />
+                     </font>
+                  </Label>
+                  <Label text="Sales Available" textFill="#e7e5e5" />
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label id="itemsLabel" fx:id="itemsLabel" style="-fx-text-fill: #de0000;" text="0" textFill="#de0000">
+                     <font>
+                        <Font name="System Bold" size="26.0" />
+                     </font>
+                  </Label>
+                  <Label text="Items" textFill="#e7e5e5" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <Label id="storeId" fx:id="storesHeaderLabel" layoutX="249.0" layoutY="8.0" prefHeight="58.0" prefWidth="598.0" AnchorPane.topAnchor="7.0">
+         <font>
+            <Font size="40.0" />
+         </font>
+      </Label>
+      <Label layoutX="192.0" layoutY="129.0" text="Items ">
+         <font>
+            <Font name="System Italic" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="192.0" layoutY="312.0" text="Orders">
+         <font>
+            <Font name="System Italic" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="192.0" layoutY="498.0" text="Discounts">
+         <font>
+            <Font name="System Italic" size="15.0" />
+         </font>
+      </Label>
+      <TableView fx:id="thenYouGetTableView" layoutX="636.0" layoutY="519.0" prefHeight="150.0" prefWidth="296.0" AnchorPane.leftAnchor="636.0">
+        <columns>
+          <TableColumn fx:id="thenYouGetTableViewItemNameColumn" maxWidth="98.5" minWidth="98.5" prefWidth="98.5" style="-fx-alignment: CENTER;" text="Item Name" />
+            <TableColumn fx:id="thenYouGetTableViewQuantityColumn" maxWidth="98.5" minWidth="98.5" prefWidth="98.5" style="-fx-alignment: CENTER;" text="Quantity" />
+            <TableColumn fx:id="thenYouGetTableViewForAdditionalColumn" maxWidth="98.5" minWidth="98.5" prefWidth="98.5" style="-fx-alignment: CENTER;" text="For Additional" />
+        </columns>
+      </TableView>
+      <Label layoutX="633.0" layoutY="498.0" text="Offers">
+         <font>
+            <Font name="System Italic" size="15.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

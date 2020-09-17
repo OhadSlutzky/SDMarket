@@ -6,18 +6,22 @@
 
 .anchor-pane {
 -fx-border-color: #FFFFFF;
+-fx-background-color: #FFFFFF;
 }
 
 .button:hover{
 -fx-background-color : #80CFA9;
 }
+
 .button:pressed
 {
 -fx-background-color : #3EA372
 }
 
 .scroll-pane {
-    -fx-background-color: #02030A;
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #FFFFFF;
+
 }
 
 .scroll-bar:horizontal, .scroll-bar:vertical{
@@ -38,16 +42,62 @@
 
 .scroll-bar:horizontal .thumb,
 .scroll-bar:vertical .thumb {
-    -fx-background-color: #10165F;
     -fx-background-radius: 5em;
 }
 
 .scroll-pane > .corner {
-    -fx-background-color: White;
+
 }
 
 .label {
     -fx-text-fill : #000100;
+}
+
+.storeCard {
+    -fx-border-radius: 10 10 10 10;
+    -fx-border-width: 2 2 2 2;
+}
+.storeCard:hover{
+    -fx-border-width: 0px 0px 0px 3px;
+    -fx-border-color: #000000;
+    -fx-border-style:solid;
+}
+.storeCard:hover .sidebar-btn-icon{
+    -fx-fill:#000000;
+}
+.storeCard:hover .sidebar-btn-text{
+    -fx-text-fill:#000000;
+}
+
+#amount-text-field {
+    -fx-border-radius: 10 10 10 10;
+    -fx-background-radius: 10 10 10 10;
+}
+
+#total-summary-hbox {
+    -fx-border-radius: 10 10 10 10;
+    -fx-border-color: black;
+}
+
+.text-field {
+    -fx-border-radius: 10 10 10 10;
+    -fx-background-radius: 10 10 10 10;
+}
+
+.accept-button:hover {
+    -fx-background-color : #4ABF50;
+}
+
+.accept-button:pressed {
+    -fx-background-color : #4ABF50;
+}
+
+.reject-button:hover {
+    -fx-background-color : #E42535;
+}
+
+.reject-button:pressed {
+    -fx-background-color : #E42535;
 }
 
 

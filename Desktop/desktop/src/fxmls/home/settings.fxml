@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="mainRoot" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="700.0" prefWidth="935.0" style="-fx-border-color: #FFFFFF;" styleClass="anchor-pane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SettingsController">
+   <children>
+      <HBox layoutX="200.0" layoutY="165.0" prefHeight="40.0" prefWidth="560.0" spacing="40.0" AnchorPane.leftAnchor="187.5">
+         <children>
+            <Button fx:id="normalSkinButton" mnemonicParsing="false" onAction="#onActionSkinChange" prefHeight="40.0" prefWidth="160.0" text="Normal" />
+            <Button fx:id="darkModeSkinButton" mnemonicParsing="false" onAction="#onActionSkinChange" prefHeight="40.0" prefWidth="160.0" text="Dark Mode" />
+            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="160.0" text="???" />
+         </children>
+      </HBox>
+      <CheckBox fx:id="enableAnimationsCheckBox" layoutX="188.5" layoutY="315.0" mnemonicParsing="false" onAction="#onActionEnableAnimationsCheckBox" text="Enable Animation">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </CheckBox>
+      <Separator layoutX="55.0" layoutY="265.0" prefHeight="0.0" prefWidth="837.0" AnchorPane.leftAnchor="40.0" />
+      <HBox layoutX="131.0" layoutY="66.0" spacing="15.0" AnchorPane.leftAnchor="130.0">
+         <children>
+            <Label text="Active Skin:">
+               <font>
+                  <Font size="34.0" />
+               </font>
+            </Label>
+            <Label fx:id="activeSkinLabel" text="Normal">
+               <font>
+                  <Font name="System Bold" size="34.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

@@ -1,12 +1,11 @@
 package SuperMarketLogic;
 
-import SDMImprovedFacade.Order;
-import SDMImprovedFacade.Store;
-import SDMImprovedFacade.StoreItem;
-import SDMImprovedFacade.SuperDuperMarket;
+import SDMImprovedFacade.*;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import generatedClasses.*;
+import javafx.beans.value.ObservableValue;
+
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
@@ -17,6 +16,11 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class SuperMarketLogic {
     private SuperDuperMarket SDMImproved;
+    private final int X_TOP_RANGE = 50;
+    private final int X_LOW_RANGE = 1;
+    private final int Y_TOP_RANGE = 50;
+    private final int Y_LOW_RANGE = 1;
+
 
     public boolean loadData(String filePath, StringBuilder outputMessage) throws JAXBException {
         boolean successFlag = true;
@@ -69,13 +73,149 @@ public class SuperMarketLogic {
 
     private boolean validateSDMDataLoaded(SuperDuperMarketDescriptor SDMtoValidate, StringBuilder outputMessage) {
         try {
-            updateOutputMessage(outputMessage, "<The data was loaded successfully from the XML file>");
-            return isSDMItemsDataValid(SDMtoValidate, outputMessage) && isSDMStoresDataValid(SDMtoValidate, outputMessage);
+            //updateOutputMessage(outputMessage, "<The data was loaded successfully from the XML file>");
+            return isSDMItemsDataValid(SDMtoValidate, outputMessage) && isSDMStoresDataValid(SDMtoValidate, outputMessage) &&
+                    isSDMCustomersDataValid(SDMtoValidate, outputMessage) && isSDMDiscountsDataValid(SDMtoValidate, outputMessage);
         } catch (NullPointerException e) {
             throw new NullPointerException("<One of the members in the system was Null>");
         } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException("<There was an error instantiating a data structure>");
         }
+    }
+
+    private boolean isSDMDiscountsDataValid(SuperDuperMarketDescriptor sdMtoValidate, StringBuilder outputMessage) {
+        //When entering this method all of the stores items are valid and in the system.
+        for (SDMStore store : sdMtoValidate.getSDMStores().getSDMStore()) {
+            if (validateStoreDiscountsItemsPurchasable(store.getSDMDiscounts(), store)){
+                if(!validateStoreDiscountsUniqueNames(store.getSDMDiscounts())){
+                    updateOutputMessage(outputMessage, "<There are two discounts with the same name in one store>");
+                    return false;
+                }
+            }
+            else{
+                updateOutputMessage(outputMessage, "<There is a discount in the store which invloves an item that is not being sold by the store>");
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    //MIGHT BE FUALTY
+    private boolean validateStoreDiscountsUniqueNames(SDMDiscounts sdmDiscounts) {
+        HashSet<String> discountsNames = new HashSet<>();
+        if(sdmDiscounts != null){
+            for (SDMDiscount discount : sdmDiscounts.getSDMDiscount()) {
+                if(!discountsNames.contains(discount.getName())) {
+                    discountsNames.add(discount.getName());
+                }
+                else { return false; }
+            }
+        }
+
+        return true;
+    }
+
+    private boolean validateStoreDiscountsItemsPurchasable(SDMDiscounts sdmDiscounts, SDMStore store) {
+        if(sdmDiscounts != null){
+            for (SDMDiscount discount : sdmDiscounts.getSDMDiscount()) {
+                if(isItemExistInStore(discount.getIfYouBuy().getItemId(), store)){
+                    for (SDMOffer offer : discount.getThenYouGet().getSDMOffer()) {
+                        if(!isItemExistInStore(offer.getItemId(), store)){ return false; }
+                    }
+                }
+                else { return false; }
+            }
+        }
+
+        return true;
+    }
+
+    private boolean isItemExistInStore(int itemId, SDMStore store) {
+        for (SDMSell sdmSell : store.getSDMPrices().getSDMSell()) {
+            if (itemId == sdmSell.getItemId()) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private boolean isSDMCustomersDataValid(SuperDuperMarketDescriptor sdMtoValidate, StringBuilder outputMessage) {
+        if (isSDMCustomerLocationUnique(sdMtoValidate.getSDMCustomers(), sdMtoValidate.getSDMStores())) {
+            if(isSDMCustomersIdUnique(sdMtoValidate.getSDMCustomers())){
+                if(isSDMCustomersLocationInRange(sdMtoValidate.getSDMCustomers())){
+                    return true;
+                }
+                else {
+                    updateOutputMessage(outputMessage, "<There is a customer with a location out of range>");
+                }
+            }
+            else {
+                updateOutputMessage(outputMessage, "<There are customers with the same ID>");
+            }
+        }
+        else {
+            updateOutputMessage(outputMessage, "<There are two objects (customers and stores) on the same location>");
+        }
+
+        return false;
+    }
+
+    private boolean isSDMCustomersLocationInRange(SDMCustomers sdmCustomers) {
+        boolean isValidFlag = true;
+
+        for (SDMCustomer customer : sdmCustomers.getSDMCustomer()) {
+            if(!isSDMCustomerLocationInRange(customer.getLocation())) {
+                isValidFlag = false;
+                break;
+            }
+        }
+
+        return isValidFlag;
+    }
+
+    private boolean isSDMCustomerLocationInRange(Location location) {
+        return X_LOW_RANGE <= location.getX() && location.getX() <= X_TOP_RANGE &&
+                Y_LOW_RANGE <= location.getY() && location.getY() <= Y_TOP_RANGE;
+    }
+
+    private boolean isSDMCustomerLocationUnique(SDMCustomers sdmCustomers, SDMStores sdmStores) {
+        for (SDMCustomer customer : sdmCustomers.getSDMCustomer()) {
+            //If one of the validations fails -> return false.
+            if ((!checkUserLocationAgainstAllCustomersLocation(customer, sdmCustomers)) ||
+                    (!checkUserLocationAgainstAllStoresLocationsBeforeSDMisLoaded(customer, sdmStores))) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    private boolean checkUserLocationAgainstAllCustomersLocation(SDMCustomer customerToCheck, SDMCustomers sdmCustomers) {
+        for (SDMCustomer customer : sdmCustomers.getSDMCustomer()) {
+            if(customer.getId() != customerToCheck.getId()){
+                if(customer.getLocation().getX() == customerToCheck.getLocation().getX() &&
+                customer.getLocation().getY() == customerToCheck.getLocation().getY())
+                    return false;
+            }
+        }
+
+        return true;
+    }
+
+    private boolean isSDMCustomersIdUnique(SDMCustomers sdmCustomers) {
+        HashSet<Integer> hashSet = new HashSet<>();
+
+        for (SDMCustomer customer : sdmCustomers.getSDMCustomer()) {
+            if (!hashSet.contains(customer.getId())) {
+                hashSet.add(customer.getId());
+            } else {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     private boolean isSDMItemsDataValid(SuperDuperMarketDescriptor SDMtoValidate, StringBuilder outputMessage) {
@@ -192,8 +332,8 @@ public class SuperMarketLogic {
         try {
             for (SDMStore store : storesToValidate.getSDMStore()) {
 
-                if (!(store.getLocation().getX() <= 50 && store.getLocation().getX() >= 1 &&
-                        store.getLocation().getY() >= 1 && store.getLocation().getY() <= 50)) {
+                if (!(store.getLocation().getX() <= X_TOP_RANGE && store.getLocation().getX() >= X_LOW_RANGE &&
+                        store.getLocation().getY() >= Y_LOW_RANGE && store.getLocation().getY() <= Y_TOP_RANGE)) {
                     return false;
                 }
             }
@@ -227,6 +367,20 @@ public class SuperMarketLogic {
         return SDMImproved.getSystemItems();
     }
 
+    public boolean checkUserLocationAgainstAllStoresLocationsBeforeSDMisLoaded(SDMCustomer customerToCheck, SDMStores sdmStores) {
+        boolean isValidFlag = true;
+        Location userLocation = customerToCheck.getLocation();
+
+        for (SDMStore store : sdmStores.getSDMStore()) {
+            if (store.getLocation().getY() == userLocation.getY() && store.getLocation().getX() == userLocation.getX()) {
+                isValidFlag = false;
+                break;
+            }
+        }
+
+        return isValidFlag;
+    }
+
     public boolean checkUserLocationAgainstAllStoresLocations(int x, int y) {
         AtomicBoolean locationIsValidFlag = new AtomicBoolean(true);
         Location userLocation = new Location();
@@ -245,7 +399,6 @@ public class SuperMarketLogic {
 
     public void updateStoreAndSystemItemAmountInformationAccordingToNewOrder(List<StoreItem> orderItems, Store storeToOrderFrom) {
         orderItems.forEach(itemInOrder -> {
-
             double currentItemAmount = storeToOrderFrom.getItemsBeingSold().get(itemInOrder.getId()).getTotalItemsSold();
             storeToOrderFrom.getItemsBeingSold().get(itemInOrder.getId()).setTotalItemsSold(currentItemAmount + itemInOrder.getTotalItemsSold());
 
@@ -268,8 +421,10 @@ public class SuperMarketLogic {
 
     public void addItemToStore(StoreItem itemToAdd, Store storeOfChoice) {
         this.SDMImproved.getSystemStores().get(storeOfChoice.getId()).getItemsBeingSold().put(itemToAdd.getId(), itemToAdd);
+
         this.SDMImproved.getSystemStores().get(storeOfChoice.getId()).
                 getItemsBeingSold().get(itemToAdd.getId()).setPricePerUnit(itemToAdd.getAveragePriceOfTheItem());
+
         this.SDMImproved.initializeAveragePriceOfItemAndAmountOfStoresSellingAnItem();
     }
 
@@ -284,11 +439,12 @@ public class SuperMarketLogic {
     }
 
     public boolean validateLocationBorders(int x, int y) {
-        return (1 <= x && x <= 50) && (1 <= y && y <= 50);
+        return (X_LOW_RANGE <= x && x <= X_TOP_RANGE) && (Y_LOW_RANGE <= y && y <= Y_TOP_RANGE);
     }
 
     public void generateOrderForStore(Store storeToOrderFrom, String userDateInput, int lastOrderID, List<StoreItem> orderItems, Location userLocationInput) {
         storeToOrderFrom.generateOrder(userDateInput, lastOrderID, orderItems, userLocationInput);
+        this.SDMImproved.updateTotalNumberOfOrders();
     }
 
     public double calculateDistanceFromUser(Store storeToOrderFrom, Location userLocationInput) {
@@ -414,6 +570,7 @@ public class SuperMarketLogic {
         Order dynamicOrder = new Order(userDateInput, userLocationInput, orderIDForAllOrdersIncluded,
                 totalDeliveryCost, amountOfStoresParticipating, itemsToOrder);
         this.SDMImproved.addDynamicOrder(dynamicOrder);
+        this.SDMImproved.updateTotalNumberOfOrders();
     }
 
     public String getStringOfAllDynamicSystemOrders() {
@@ -542,5 +699,68 @@ public class SuperMarketLogic {
         }
 
         this.SDMImproved.setOrderID(maxOrderID.get() + 1);
+    }
+
+    public ObservableValue<? extends String> getAmountItemsStringProperty() {
+        return this.SDMImproved.getAmountItemsProperty();
+    }
+
+    public ObservableValue<? extends String> getAmountOrdersStringProperty() {
+        return this.SDMImproved.getAmountOrdersProperty();
+    }
+
+    public ObservableValue<? extends String> getAmountStoresStringProperty() {
+        return SDMImproved.getAmountStoresProperty();
+    }
+
+    public ObservableValue<? extends String> getAmountCustomers() {
+        return SDMImproved.getAmountCustomersProperty();
+    }
+
+    public Map<Integer, Customer> getCustomers() {
+        return SDMImproved.getSystemCustomers();
+    }
+
+    public Double getCheapestPriceForItem(int itemId) {
+        StoreItem sItem;
+        double cheapestPrice = 0;
+        for (Store store : this.getStores().values()) {
+            if(store.getItemsBeingSold().containsKey(itemId)) {
+                sItem = store.getItemsBeingSold().get(itemId);
+                if(sItem.getPricePerUnit() < cheapestPrice) {
+                    cheapestPrice = sItem.getPricePerUnit();
+                }
+            }
+        }
+
+        return cheapestPrice;
+    }
+
+    public Store getStoreForDynamicPurchase(int itemId) {
+        StoreItem sItem;
+        Store storeToBuyFrom = null;
+        double cheapestPrice = 0;
+        for (Store store : this.getStores().values()) {
+            if(store.getItemsBeingSold().containsKey(itemId)) {
+                 sItem = store.getItemsBeingSold().get(itemId);
+                 if(sItem.getPricePerUnit() < cheapestPrice || cheapestPrice == 0) { //cheapestPrice == 0 for the first time...
+                     cheapestPrice = sItem.getPricePerUnit();
+                     storeToBuyFrom = store;
+                 }
+            }
+        }
+
+        return storeToBuyFrom;
+    }
+
+    public void addStaticOrderToCustomer(int currentStaticStoreId, int lastOrderId, Customer customer) {
+        Order lastOrder = this.SDMImproved.getSystemStores().get(currentStaticStoreId).getLastOrder();
+        if(lastOrderId == lastOrder.getOrderId()) {
+            customer.addOrder(lastOrder);
+        }
+    }
+
+    public void addDynamicOrderToCustomer(int lastOrderId, Customer customer) {
+        customer.addOrder(this.SDMImproved.getSystemDynamicOrders().get(lastOrderId));
     }
 }

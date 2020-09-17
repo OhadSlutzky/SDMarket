@@ -1,0 +1,103 @@
+.button
+{
+-fx-background-color : #060D37;
+-fx-text-fill : #FFFFFF;
+}
+
+.anchor-pane {
+-fx-border-color: #FFFFFF;
+-fx-background-color: #FFFFFF;
+}
+
+.button:hover{
+-fx-background-color : #80CFA9;
+}
+
+.button:pressed
+{
+-fx-background-color : #3EA372
+}
+
+.scroll-pane {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #FFFFFF;
+
+}
+
+.scroll-bar:horizontal, .scroll-bar:vertical{
+    -fx-background-color:transparent;
+}
+
+.increment-button, .decrement-button {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.scroll-bar:horizontal .track,
+.scroll-bar:vertical .track{
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-background-radius: 0em;
+}
+
+.scroll-bar:horizontal .thumb,
+.scroll-bar:vertical .thumb {
+    -fx-background-radius: 5em;
+}
+
+.scroll-pane > .corner {
+
+}
+
+.label {
+    -fx-text-fill : #000100;
+}
+
+.storeCard {
+    -fx-border-radius: 10 10 10 10;
+    -fx-border-width: 2 2 2 2;
+}
+.storeCard:hover{
+    -fx-border-width: 0px 0px 0px 3px;
+    -fx-border-color: #000000;
+    -fx-border-style:solid;
+}
+.storeCard:hover .sidebar-btn-icon{
+    -fx-fill:#000000;
+}
+.storeCard:hover .sidebar-btn-text{
+    -fx-text-fill:#000000;
+}
+
+#amount-text-field {
+    -fx-border-radius: 10 10 10 10;
+    -fx-background-radius: 10 10 10 10;
+}
+
+#total-summary-hbox {
+    -fx-border-radius: 10 10 10 10;
+    -fx-border-color: black;
+}
+
+.text-field {
+    -fx-border-radius: 10 10 10 10;
+    -fx-background-radius: 10 10 10 10;
+}
+
+.accept-button:hover {
+    -fx-background-color : #4ABF50;
+}
+
+.accept-button:pressed {
+    -fx-background-color : #4ABF50;
+}
+
+.reject-button:hover {
+    -fx-background-color : #E42535;
+}
+
+.reject-button:pressed {
+    -fx-background-color : #E42535;
+}
+
+

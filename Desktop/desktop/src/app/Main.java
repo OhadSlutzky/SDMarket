@@ -13,13 +13,14 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         FXMLLoader loader = new FXMLLoader();
-        URL mainFXML = getClass().getResource("/fxmls/home/home2.fxml");
+        URL mainFXML = getClass().getResource("/fxmls/home/index.fxml");
         loader.setLocation(mainFXML);
         Pane root = loader.load();
         AppController appController = loader.getController();
         appController.setMainStage(primaryStage);
         primaryStage.setTitle("SDMarket");
-        Scene scene = new Scene(root, 1050, 600);
+        Scene scene = new Scene(root, 1235, 700);
+        scene.getStylesheets().add("/fxmls/home/style.css");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
