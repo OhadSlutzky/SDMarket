@@ -366,49 +366,63 @@ public class UpdateInformationController {
 
             if(isObjectIdValid()){
                 objectId = Integer.parseInt(this.addDynamicObjectIdTextField.getText());
-                objectName = this.addDynamicObjectNameTextField.getText();
+                objectName = this.addDynamicObjectNameTextField.getText().trim();
+                if(!objectName.equals("")){
+                    if(isPpkValid()){
+                        int storePpk = Integer.parseInt(this.addDynamicStorePpkTextField.getText());
 
-                if(isPpkValid()){
-                    int storePpk = Integer.parseInt(this.addDynamicStorePpkTextField.getText());
+                        if(isCoordinateValid(true)){
+                            storeXCoordinate = Integer.parseInt(this.addDynamicStoreLocationXTextField.getText());
 
-                    if(isCoordinateValid(true)){
-                        storeXCoordinate = Integer.parseInt(this.addDynamicStoreLocationXTextField.getText());
+                            if(isCoordinateValid(false)){
+                                storeYCoordinate = Integer.parseInt(this.addDynamicStoreLocationYTextField.getText());
 
-                        if(isCoordinateValid(false)){
-                            storeYCoordinate = Integer.parseInt(this.addDynamicStoreLocationYTextField.getText());
-
-                            if(!isLocationTaken(storeXCoordinate, storeYCoordinate)){
-                                Location storeLocation = new Location();
-                                storeLocation.setX(storeXCoordinate);
-                                storeLocation.setY(storeYCoordinate);
-                                newlyAddedStore = new Store(objectId, objectName, storePpk, storeLocation);
-                                initializeAddItemToStoreSectionNewStore();
-                                disableNewObjectSectionAfterAddButtonPressed();
-                                initializeNewStoreComponents();
-                                resetNewObjectTextFieldsBorderAndText();
-                            }
-                            else{
-                                this.addDynamicStoreLocationXTextField.clear();
-                                this.addDynamicStoreLocationXTextField.setPromptText("Location Taken");
-                                this.addDynamicStoreLocationXTextField.setStyle("-fx-border-color: red");
-                                this.addDynamicStoreLocationYTextField.clear();
-                                this.addDynamicStoreLocationYTextField.setPromptText("Location Taken");
-                                this.addDynamicStoreLocationYTextField.setStyle("-fx-border-color: red");
+                                if(!isLocationTaken(storeXCoordinate, storeYCoordinate)){
+                                    Location storeLocation = new Location();
+                                    storeLocation.setX(storeXCoordinate);
+                                    storeLocation.setY(storeYCoordinate);
+                                    newlyAddedStore = new Store(objectId, objectName, storePpk, storeLocation);
+                                    initializeAddItemToStoreSectionNewStore();
+                                    disableNewObjectSectionAfterAddButtonPressed();
+                                    initializeNewStoreComponents();
+                                    resetNewObjectTextFieldsBorderAndText();
+                                }
+                                else{
+                                    this.addDynamicStoreLocationXTextField.clear();
+                                    this.addDynamicStoreLocationXTextField.setPromptText("Location Taken");
+                                    this.addDynamicStoreLocationXTextField.setStyle("-fx-border-color: red");
+                                    this.addDynamicStoreLocationYTextField.clear();
+                                    this.addDynamicStoreLocationYTextField.setPromptText("Location Taken");
+                                    this.addDynamicStoreLocationYTextField.setStyle("-fx-border-color: red");
+                                }
                             }
                         }
                     }
+                }
+                else{
+                    this.addDynamicObjectNameTextField.clear();
+                    this.addDynamicObjectNameTextField.setPromptText("Cannot Be Blank");
+                    this.addDynamicObjectNameTextField.setStyle("-fx-border-color: red");
                 }
             }
         }
         else if(this.chooseOperationComboBox.getSelectionModel().getSelectedItem().equals(ADD_NEW_ITEM_TO_SYSTEM)){
             if(isObjectIdValid()){
                 objectId = Integer.parseInt(this.addDynamicObjectIdTextField.getText());
-                objectName = this.addDynamicObjectNameTextField.getText();
-                String itemCategory = this.chooseItemCategoryComboBox.getSelectionModel().getSelectedItem();
-                newlyAddedStoreItem = new StoreItem(objectId, objectName, itemCategory);
-                initializeAddItemToStoreSectionNewItem();
-                disableNewObjectSectionAfterAddButtonPressed();
-                resetNewObjectTextFieldsBorderAndText();
+                objectName = this.addDynamicObjectNameTextField.getText().trim();
+
+                if(!objectName.equals("")){
+                    String itemCategory = this.chooseItemCategoryComboBox.getSelectionModel().getSelectedItem();
+                    newlyAddedStoreItem = new StoreItem(objectId, objectName, itemCategory);
+                    initializeAddItemToStoreSectionNewItem();
+                    disableNewObjectSectionAfterAddButtonPressed();
+                    resetNewObjectTextFieldsBorderAndText();
+                }
+                else{
+                    this.addDynamicObjectNameTextField.clear();
+                    this.addDynamicObjectNameTextField.setPromptText("Cannot Be Blank");
+                    this.addDynamicObjectNameTextField.setStyle("-fx-border-color: red");
+                }
             }
         }
     }

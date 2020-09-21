@@ -11,6 +11,7 @@
 
 .combo-box .list-cell{
     -fx-text-fill : white;
+    -fx-background-color: black;
 }
 
 .button-main-menu{
