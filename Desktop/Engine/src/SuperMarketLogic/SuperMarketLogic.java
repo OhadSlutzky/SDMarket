@@ -413,6 +413,7 @@ public class SuperMarketLogic {
 
     public void updatePriceOfAnItem(int storeOfChoiceId, int itemId, double newPrice) {
         this.getStores().get(storeOfChoiceId).getItemsBeingSold().get(itemId).setPricePerUnit(newPrice);
+        this.SDMImproved.initializeAveragePriceOfItemAndAmountOfStoresSellingAnItem();
     }
 
     public void updateAllStoresItemsAveragePricesAndAmountOfStoresSellingAnItem() {
@@ -422,10 +423,11 @@ public class SuperMarketLogic {
     public void addItemToStore(StoreItem itemToAdd, Store storeOfChoice) {
         this.SDMImproved.getSystemStores().get(storeOfChoice.getId()).getItemsBeingSold().put(itemToAdd.getId(), itemToAdd);
 
+        this.SDMImproved.getSystemItems().put(itemToAdd.getId(), itemToAdd);
         this.SDMImproved.getSystemStores().get(storeOfChoice.getId()).
                 getItemsBeingSold().get(itemToAdd.getId()).setPricePerUnit(itemToAdd.getAveragePriceOfTheItem());
-
         this.SDMImproved.initializeAveragePriceOfItemAndAmountOfStoresSellingAnItem();
+
     }
 
     public void removeItemFromStore(StoreItem itemToRemove, Store storeOfChoice) {
@@ -762,5 +764,10 @@ public class SuperMarketLogic {
 
     public void addDynamicOrderToCustomer(int lastOrderId, Customer customer) {
         customer.addOrder(this.SDMImproved.getSystemDynamicOrders().get(lastOrderId));
+    }
+
+    public void addStoreToSystem(Store newlyAddedStore) {
+        this.SDMImproved.getSystemStores().put(newlyAddedStore.getId(), newlyAddedStore);
+        this.SDMImproved.initializeAveragePriceOfItemAndAmountOfStoresSellingAnItem();
     }
 }

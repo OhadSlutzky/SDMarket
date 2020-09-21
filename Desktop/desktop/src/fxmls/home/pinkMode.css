@@ -1,38 +1,73 @@
 .button
 {
--fx-background-color : #FCF7F8;
--fx-text-fill : #000100;
+    -fx-background-color : #d651a2;
+    -fx-text-fill : white;
 }
 
 .button-main-menu{
     -fx-background-color: #FCF7F8;
+    -fx-text-fill: black;
 }
 
 #vbox-main-menu{
     -fx-background-color: #FCF7F8;
 }
 
+.card-display{
+    -fx-background-color: #a9879a;
+}
+
+.check-box{
+    -fx-text-fill: black;
+}
+
 .anchor-pane {
--fx-border-color: #FFFFFF;
--fx-background-color: #FFFFFF;
+    -fx-border-color: #ffcded;
+    -fx-background-color: #ffcded;
+}
+
+.combo-box{
+    -fx-background-color : #d651a2;
+}
+
+.combo-box .list-cell{
+    -fx-text-fill : white;
 }
 
 .button:hover{
--fx-background-color : #80CFA9;
+    -fx-background-color : #56cfad;
+    -fx-text-fill : black;
 }
 
 .button:pressed
 {
--fx-background-color : #3EA372
-}
-
-.label-text{
-    -fx-text-fill: black;
+    -fx-background-color : #40987f
 }
 
 .scroll-pane {
     -fx-background-color: #FFFFFF;
     -fx-border-color: #FFFFFF;
+}
+
+.table-view{
+    -fx-background-color: #ec87c3;
+}
+
+.table-row-cell {
+    -fx-background-color: #ec87c3;
+}
+
+.table-row-cell:focused {
+    -fx-background-color: #d74b9e;
+    -fx-text-fill: black;
+}
+
+.table-row-cell .text {
+    -fx-fill: black;
+}
+
+.table-view .column-header{
+    -fx-background-color: #FCF7F8;
 }
 
 .scroll-bar:horizontal, .scroll-bar:vertical{
@@ -44,7 +79,6 @@
     -fx-border-color: transparent;
 }
 
-.scroll-bar:horizontal .track,
 .scroll-bar:vertical .track{
     -fx-background-color: transparent;
     -fx-border-color: transparent;
@@ -56,12 +90,12 @@
     -fx-background-radius: 5em;
 }
 
-.scroll-pane > .corner {
-
+.label {
+    -fx-text-fill : black;
 }
 
-.label {
-    -fx-text-fill : #000100;
+.card-label{
+    -fx-text-fill: black;
 }
 
 .storeCard {

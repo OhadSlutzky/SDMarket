@@ -13,12 +13,12 @@
    <children>
       <Pane prefHeight="30.0" prefWidth="140.0" style="-fx-background-color: #CCCCCC; -fx-background-radius: 10 10 0 0;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label fx:id="discountCardItemToBuyId" alignment="CENTER" layoutX="35.0" layoutY="6.0" prefHeight="21.0" prefWidth="34.0" text="1">
+            <Label fx:id="discountCardItemToBuyId" alignment="CENTER" layoutX="35.0" layoutY="6.0" prefHeight="21.0" prefWidth="34.0" styleClass="card-label" text="1">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label fx:id="discountCardItemToBuyName" alignment="CENTER" layoutX="48.0" layoutY="6.0" prefHeight="21.0" prefWidth="77.0" text="iName">
+            <Label fx:id="discountCardItemToBuyName" alignment="CENTER" layoutX="48.0" layoutY="6.0" prefHeight="21.0" prefWidth="77.0" styleClass="card-label" text="iName">
                <font>
                   <Font size="15.0" />
                </font>
@@ -31,7 +31,7 @@
             </ImageView>
          </children>
       </Pane>
-      <Label fx:id="discountCardDiscountNameLabel" alignment="CENTER" layoutY="40.0" prefHeight="21.0" prefWidth="140.0" text="DISCOUNT NAME" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <Label fx:id="discountCardDiscountNameLabel" alignment="CENTER" layoutY="40.0" prefHeight="21.0" prefWidth="140.0" styleClass="card-label" text="DISCOUNT NAME" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <font>
             <Font size="15.0" />
          </font>
@@ -41,7 +41,7 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <Label fx:id="discountCardStoreNameLabel" alignment="CENTER" layoutY="55.0" prefHeight="21.0" prefWidth="140.0" text="store name" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+      <Label fx:id="discountCardStoreNameLabel" alignment="CENTER" layoutY="55.0" prefHeight="21.0" prefWidth="140.0" styleClass="card-label" text="store name" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
    </children>
    <opaqueInsets>
       <Insets left="10.0" />

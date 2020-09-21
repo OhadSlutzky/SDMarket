@@ -7,10 +7,11 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
 <AnchorPane fx:id="mainRoot" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="700.0" prefWidth="935.0" style="-fx-border-color: #FFFFFF;" styleClass="anchor-pane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.UpdateInformationController">
    <children>
-      <HBox layoutX="77.0" layoutY="120.0" prefHeight="28.0" prefWidth="840.0" spacing="30.0" AnchorPane.leftAnchor="47.5">
+      <HBox fx:id="updateInformationOperationDashboardHBox" layoutX="77.0" layoutY="120.0" prefHeight="28.0" prefWidth="840.0" spacing="30.0" AnchorPane.leftAnchor="47.5">
          <children>
             <ComboBox fx:id="chooseOperationComboBox" onAction="#onActionChooseOperation" prefHeight="25.0" prefWidth="250.0" promptText="Choose an operation" style="-fx-alignment: Center;" />
             <ComboBox fx:id="chooseStoreComboBox" prefHeight="25.0" prefWidth="200.0" promptText="Choose Store" style="-fx-alignment: Center;" />
@@ -24,5 +25,34 @@
       </HBox>
       <Separator layoutX="49.0" layoutY="160.0" prefHeight="28.0" prefWidth="840.0" />
       <HBox layoutX="320.0" layoutY="223.0" spacing="20.0" AnchorPane.leftAnchor="330.0" />
+      <VBox fx:id="updateInformationAddDynamicObjectVBox" disable="true" layoutX="95.5" layoutY="223.0" spacing="40.0" visible="false">
+         <children>
+            <HBox fx:id="inputNewObjectInformationHBox" spacing="20.0">
+               <children>
+                  <TextField fx:id="addDynamicObjectIdTextField" prefHeight="31.0" prefWidth="117.0" promptText="Store ID" />
+                  <TextField fx:id="addDynamicObjectNameTextField" promptText="Store Name" />
+                  <TextField fx:id="addDynamicStorePpkTextField" prefHeight="31.0" prefWidth="102.0" promptText="Store PPK" />
+                  <TextField fx:id="addDynamicStoreLocationXTextField" prefHeight="31.0" prefWidth="130.0" promptText="Store Location X" />
+                  <TextField fx:id="addDynamicStoreLocationYTextField" prefHeight="31.0" prefWidth="130.0" promptText="Store Location Y" />
+               </children>
+            </HBox>
+            <Button fx:id="addDynamicObjectAddButton" mnemonicParsing="false" onAction="#onActionAddButton" prefHeight="31.0" prefWidth="150.0" text="Add">
+               <VBox.margin>
+                  <Insets left="298.0" />
+               </VBox.margin>
+            </Button>
+            <Separator prefWidth="200.0" />
+            <HBox fx:id="addNewObjectAddItemToStoreHBox" disable="true" prefHeight="31.0" prefWidth="644.0" spacing="20.0">
+               <children>
+                  <ComboBox fx:id="addDynamicObjectChooseStoreComboBox" prefHeight="31.0" prefWidth="265.0" />
+                  <TextField fx:id="addDynamicObjectItemPriceTextField" prefHeight="31.0" prefWidth="152.0" />
+                  <Button fx:id="addDynamicObjectAddItemToStoreButton" mnemonicParsing="false" onAction="#onActionAddItemToStoreButton" prefHeight="31.0" prefWidth="151.0" text="Add Item To Store" />
+                  <Button fx:id="AddNewObjectFinishButton" mnemonicParsing="false" onAction="#onActionFinishButton" prefHeight="31.0" prefWidth="121.0" text="Finish" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <ComboBox fx:id="chooseItemCategoryComboBox" layoutX="439.0" layoutY="222.0" prefWidth="150.0" visible="false" />
+      <ComboBox fx:id="addDynamicObjectChooseItemComboBox" disable="true" layoutX="96.0" layoutY="408.0" prefHeight="31.0" prefWidth="265.0" visible="false" />
    </children>
 </AnchorPane>

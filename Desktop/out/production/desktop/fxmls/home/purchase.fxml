@@ -21,7 +21,7 @@
          <content>
             <AnchorPane prefHeight="692.0" prefWidth="175.0">
                <children>
-                  <VBox fx:id="storeCardsVBox" fillWidth="false" prefHeight="695.0" prefWidth="160.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <VBox fx:id="storeCardsVBox" fillWidth="false" prefHeight="695.0" prefWidth="160.0" spacing="20.0" styleClass="card-display" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <padding>
                         <Insets bottom="10.0" left="15.0" right="10.0" top="10.0" />
                      </padding>
@@ -39,7 +39,7 @@
                         <Font name="System Bold" size="26.0" />
                      </font>
                   </Label>
-                  <Label text="Cart Price" textFill="#e7e5e5" />
+                  <Label styleClass="label-text" text="Cart Price" textFill="#e7e5e5" />
                </children>
             </VBox>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
@@ -49,7 +49,7 @@
                         <Font name="System Bold" size="26.0" />
                      </font>
                   </Label>
-                  <Label text="Item Types" textFill="#e7e5e5" />
+                  <Label styleClass="label-text" text="Item Types" textFill="#e7e5e5" />
                </children>
             </VBox>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
@@ -59,17 +59,18 @@
                         <Font name="System Bold" size="26.0" />
                      </font>
                   </Label>
-                  <Label text="Total Items" textFill="#e7e5e5" />
+                  <Label styleClass="label-text" text="Total Items" textFill="#e7e5e5" />
                </children>
             </VBox>
          </children>
       </HBox>
-      <HBox layoutX="291.0" layoutY="106.0" prefHeight="25.0" prefWidth="540.0" spacing="20.0" AnchorPane.leftAnchor="287.5">
+      <HBox layoutX="201.0" layoutY="106.0" prefHeight="31.0" prefWidth="710.0" spacing="20.0" AnchorPane.leftAnchor="197.0">
          <children>
-            <ComboBox fx:id="customerComboBox" onAction="#onActionCustomerSelectComboBox" prefHeight="25.0" prefWidth="120.0" promptText="Customer" />
-            <Button fx:id="staticPurchaseButton" mnemonicParsing="false" onAction="#onActionStaticPurchaseButton" prefHeight="25.0" prefWidth="120.0" text="Static Purchase" />
-            <Button fx:id="dynamicPurchaseButton" mnemonicParsing="false" onAction="#onActionDynamicPurchaseButton" prefHeight="25.0" prefWidth="120.0" text="Dynamic Purchase" />
-            <DatePicker fx:id="deliveryDatePicker" prefHeight="25.0" prefWidth="120.0" promptText="Delivery Date" />
+            <Button fx:id="resetOrderButton" mnemonicParsing="false" onAction="#onActionResetOrderButton" prefWidth="100.0" text="Reset Order" />
+            <ComboBox fx:id="customerComboBox" onAction="#onActionCustomerSelectComboBox" prefHeight="31.0" prefWidth="120.0" promptText="Customer" />
+            <Button fx:id="staticPurchaseButton" mnemonicParsing="false" onAction="#onActionStaticPurchaseButton" prefHeight="25.0" prefWidth="125.0" text="Static Purchase" />
+            <Button fx:id="dynamicPurchaseButton" mnemonicParsing="false" onAction="#onActionDynamicPurchaseButton" prefHeight="25.0" prefWidth="145.0" text="Dynamic Purchase" />
+            <DatePicker fx:id="deliveryDatePicker" prefHeight="25.0" prefWidth="140.0" promptText="Delivery Date" />
          </children>
       </HBox>
       <TableView fx:id="purchaseItemsAvailableTableView" disable="true" layoutX="197.0" layoutY="172.0" prefHeight="200.0" prefWidth="380.0" AnchorPane.leftAnchor="195.0">
@@ -95,12 +96,12 @@
             <TableColumn fx:id="shoppingCartTableViewTotalPriceColumn" maxWidth="95.0" minWidth="95.0" prefWidth="95.0" style="-fx-alignment: CENTER;" text="Total Price" />
          </columns>
       </TableView>
-      <Label layoutX="601.0" layoutY="151.0" text="Shopping Cart">
+      <Label layoutX="601.0" layoutY="151.0" styleClass="label-text" text="Shopping Cart">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label layoutX="197.0" layoutY="151.0" text="Items" AnchorPane.leftAnchor="197.0">
+      <Label layoutX="197.0" layoutY="151.0" styleClass="label-text" text="Items" AnchorPane.leftAnchor="197.0">
          <font>
             <Font size="15.0" />
          </font>
@@ -110,12 +111,12 @@
          <content>
             <AnchorPane prefHeight="92.0" prefWidth="312.0">
                <children>
-                  <HBox fx:id="discountsCardsHBox" prefHeight="92.0" prefWidth="310.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <HBox fx:id="discountsCardsHBox" prefHeight="92.0" prefWidth="310.0" spacing="20.0" styleClass="card-display" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                </children>
             </AnchorPane>
          </content>
       </ScrollPane>
-      <Label fx:id="discountAvailableLabel" layoutX="195.0" layoutY="425.0" text="Discounts Available" AnchorPane.leftAnchor="197.0">
+      <Label fx:id="discountAvailableLabel" layoutX="195.0" layoutY="425.0" styleClass="label-text" text="Discounts Available" AnchorPane.leftAnchor="197.0">
          <font>
             <Font size="15.0" />
          </font>
@@ -152,10 +153,10 @@
         </columns>
       </TableView>
       <ComboBox fx:id="selectStoreToViewItsOrderDetailsComboBox" disable="true" layoutX="490.0" layoutY="520.0" onAction="#onActionFinalSummaryComboBoxStoreSelected" prefHeight="25.0" prefWidth="426.0" promptText="Select Store To View It's Order Details" visible="false" AnchorPane.leftAnchor="195.0" />
-      <HBox fx:id="acceptRejectOrderHBox" disable="true" layoutX="481.0" layoutY="668.0" spacing="10.0" visible="false" AnchorPane.leftAnchor="467.5">
+      <HBox fx:id="acceptRejectOrderHBox" disable="true" layoutX="481.0" layoutY="660.0" spacing="10.0" visible="false" AnchorPane.leftAnchor="467.5">
          <children>
-            <Button fx:id="acceptOrderButton" mnemonicParsing="false" onAction="#onActionAcceptOrderButton" style="-fx-background-color: #68CA6D;" styleClass="accept-button" text="Accept Order" />
-            <Button fx:id="rejectOrderButton" mnemonicParsing="false" onAction="#onActionRejectOrderButton" style="-fx-background-color: #E84855;" styleClass="reject-button" text="Reject Order" />
+            <Button id="accept-button" fx:id="acceptOrderButton" mnemonicParsing="false" onAction="#onActionAcceptOrderButton" text="Accept Order" />
+            <Button id="reject-button" fx:id="rejectOrderButton" mnemonicParsing="false" onAction="#onActionRejectOrderButton" text="Reject Order" />
          </children>
       </HBox>
       <HBox fx:id="storeFinalInformationHBox" alignment="CENTER_LEFT" disable="true" layoutX="369.0" layoutY="426.0" prefHeight="84.0" prefWidth="380.0" spacing="20.0" visible="false" AnchorPane.leftAnchor="195.0">
@@ -192,7 +193,7 @@
             </VBox>
          </children>
       </HBox>
-      <Label fx:id="discountOffersLabel" layoutX="199.0" layoutY="539.0" text="Discount Offers">
+      <Label fx:id="discountOffersLabel" layoutX="199.0" layoutY="539.0" styleClass="label-text" text="Discount Offers">
          <font>
             <Font size="15.0" />
          </font>
@@ -222,7 +223,6 @@
             </VBox>
          </children>
       </HBox>
-      <Button fx:id="resetOrderButton" layoutX="199.0" layoutY="106.0" mnemonicParsing="false" onAction="#onActionResetOrderButton" text="Reset Order" AnchorPane.leftAnchor="197.0" />
       <Label fx:id="itemToAddAnimationLabel" layoutX="425.0" layoutY="400.0" prefHeight="25.0" prefWidth="150.0" style="-fx-background-color: #80CFA9; -fx-alignment: center; -fx-border-radius: 10 10 10 10; -fx-background-radius: 10 10 10 10;" textAlignment="CENTER" visible="false" />
    </children>
 </AnchorPane>

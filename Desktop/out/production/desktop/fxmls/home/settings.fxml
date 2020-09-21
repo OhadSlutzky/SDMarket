@@ -14,7 +14,7 @@
          <children>
             <Button fx:id="normalSkinButton" mnemonicParsing="false" onAction="#onActionSkinChange" prefHeight="40.0" prefWidth="160.0" text="Normal" />
             <Button fx:id="darkModeSkinButton" mnemonicParsing="false" onAction="#onActionSkinChange" prefHeight="40.0" prefWidth="160.0" text="Dark Mode" />
-            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="160.0" text="???" />
+            <Button mnemonicParsing="false" onAction="#onActionSkinChange" prefHeight="40.0" prefWidth="160.0" text="Pink Mode" />
          </children>
       </HBox>
       <CheckBox fx:id="enableAnimationsCheckBox" layoutX="188.5" layoutY="315.0" mnemonicParsing="false" onAction="#onActionEnableAnimationsCheckBox" text="Enable Animation">
@@ -25,12 +25,12 @@
       <Separator layoutX="55.0" layoutY="265.0" prefHeight="0.0" prefWidth="837.0" AnchorPane.leftAnchor="40.0" />
       <HBox layoutX="131.0" layoutY="66.0" spacing="15.0" AnchorPane.leftAnchor="130.0">
          <children>
-            <Label text="Active Skin:">
+            <Label styleClass="label-text" text="Active Skin:">
                <font>
                   <Font size="34.0" />
                </font>
             </Label>
-            <Label fx:id="activeSkinLabel" text="Normal">
+            <Label fx:id="activeSkinLabel" styleClass="label-text" text="Normal">
                <font>
                   <Font name="System Bold" size="34.0" />
                </font>

@@ -1,27 +1,82 @@
 .button
 {
--fx-background-color : #060D37;
--fx-text-fill : #FFFFFF;
+-fx-background-color : black;
+-fx-text-fill : white;
 }
 
+.combo-box{
+    -fx-background-color : black;
+    -fx-text-fill : white;
+}
+
+.combo-box .list-cell{
+    -fx-text-fill : white;
+}
+
+.button-main-menu{
+    -fx-background-color: #5b5a5a;
+    -fx-text-fill: white;
+}
+
+#vbox-main-menu{
+    -fx-background-color: #5b5a5a;
+}
+
+.card-display{
+    -fx-background-color: #a8b7a8;
+}
+
+/*.text{*/
+/*    -fx-fill: white;*/
+/*}*/
+
+.check-box{
+    -fx-text-fill: white;
+}
+
+/*.table-view{*/
+/*    -fx-background-color: black;*/
+/*}*/
+
 .anchor-pane {
--fx-border-color: #FFFFFF;
--fx-background-color: #FFFFFF;
+    -fx-border-color: #39393b;
+    -fx-background-color: #39393b;
 }
 
 .button:hover{
--fx-background-color : #80CFA9;
-}
+    -fx-background-color : #80CFA9;
+    -fx-text-fill : black;}
 
 .button:pressed
 {
--fx-background-color : #3EA372
+    -fx-background-color : #3EA372
 }
 
 .scroll-pane {
     -fx-background-color: #FFFFFF;
     -fx-border-color: #FFFFFF;
+}
 
+.table-view{
+    -fx-background-color: #393838;
+    /*-fx-selection-bar: #262677;*/
+}
+
+.table-row-cell {
+    -fx-background-color: #393838;
+}
+
+.table-row-cell:focused {
+    -fx-background-color: #a4a0a0;
+    -fx-text-fill: black;
+}
+
+.table-row-cell .text {
+    -fx-fill: white;
+}
+
+.table-view .column-header{
+    -fx-background-color: #262525;
 }
 
 .scroll-bar:horizontal, .scroll-bar:vertical{
@@ -33,7 +88,6 @@
     -fx-border-color: transparent;
 }
 
-.scroll-bar:horizontal .track,
 .scroll-bar:vertical .track{
     -fx-background-color: transparent;
     -fx-border-color: transparent;
@@ -50,7 +104,11 @@
 }
 
 .label {
-    -fx-text-fill : #000100;
+    -fx-text-fill : white;
+}
+
+.card-label{
+    -fx-text-fill: black;
 }
 
 .storeCard {
@@ -84,20 +142,28 @@
     -fx-background-radius: 10 10 10 10;
 }
 
-.accept-button:hover {
-    -fx-background-color : #4ABF50;
+#accept-button{
+    -fx-background-color:  #68CA6D;
 }
 
-.accept-button:pressed {
-    -fx-background-color : #4ABF50;
+#accept-button:hover {
+    -fx-background-color : #278a2c;
 }
 
-.reject-button:hover {
-    -fx-background-color : #E42535;
+#accept-button:pressed {
+    -fx-background-color : #9fcfa2;
 }
 
-.reject-button:pressed {
-    -fx-background-color : #E42535;
+#reject-button{
+    -fx-background-color:  #E84855;
+}
+
+#reject-button:hover {
+    -fx-background-color : #8d1821;
+}
+
+#reject-button:pressed {
+    -fx-background-color : #cb777e;
 }
 
 

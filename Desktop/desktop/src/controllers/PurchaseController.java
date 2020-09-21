@@ -681,7 +681,7 @@ public class PurchaseController {
     private void createNewItemFromAppliedOfferAndUpdateTableViewAndOrderAndAddToRelevantOrder(Discount.ThenGet.Offer offer) {
         if(offer != null){
             StoreItem newStoreItemFromOffer = new StoreItem(offer.getOfferItemId(), offer.getQuantity(),
-                    offer.getForAdditional() / offer.getQuantity(), offer.getItemName(),
+                    offer.getForAdditional(), offer.getItemName(),
                     this.mainController.getSDMLogic().getItems().get(offer.getOfferItemId()).getPurchaseCategory(), true);
             addAppliedOfferToOrderAndUpdateCart(offer, newStoreItemFromOffer);
         }

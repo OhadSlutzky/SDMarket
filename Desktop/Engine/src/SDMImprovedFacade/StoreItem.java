@@ -59,6 +59,12 @@ public class StoreItem {
         this.isAvailable = true;
     }
 
+    public StoreItem(int id, String name, String itemCategory) {
+        this.Id = id;
+        this.name = name;
+        this.purchaseCategory = itemCategory;
+    }
+
     public double getTotalPrice() {
         return this.pricePerUnit * this.totalItemsSold;
     }

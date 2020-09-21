@@ -159,6 +159,7 @@ public class AppController {
         loader.load(); //need to be done before loader.getController() !
         LoadXMLController xmlLoadController = loader.getController();
         xmlLoadController.setMainController(this);
+        xmlLoadController.bindLabelsToXmlLoadedProperty();
 
         return xmlLoadController;
     }
@@ -255,6 +256,11 @@ public class AppController {
             anchorPaneMainWindow.getChildren().clear();
             anchorPaneMainWindow.getChildren().add(loadXMLController.getRoot());
         }
+
+        if(isXMLLoaded.get()){
+            loadXMLController.clearSDMMapSection();
+            loadXMLController.reloadSDMMap();
+        }
     }
 
     @FXML
@@ -344,9 +350,11 @@ public class AppController {
                 anchorPaneMainWindow.getChildren().add(anchorPane);
                 setAnchorPaneInPlace(anchorPane);
                 updateInformationController.initializeChooseOperationComboBox();
-                updateInformationController.initializeChooseStoreComboBox();
-                updateInformationController.initializeChooseItemComboBox();
+                updateInformationController.initializeChooseStoreComboBox(false);
+                updateInformationController.initializeChooseItemComboBox(false);
             }
+
+            updateInformationController.resetUpdateInformationScene();
         }
         catch(Exception e) {
             e.printStackTrace();

@@ -22,14 +22,14 @@
                   </ImageView>
                </children>
             </StackPane>
-            <Label fx:id="customerIdCardLabel" layoutX="68.0" layoutY="2.0" prefHeight="25.0" prefWidth="35.0" text="0">
+            <Label fx:id="customerIdCardLabel" layoutX="68.0" layoutY="2.0" prefHeight="25.0" prefWidth="35.0" styleClass="card-label" text="0">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
          </children>
       </Pane>
-      <Label fx:id="customerNameCardLabel" alignment="CENTER" layoutX="2.0" layoutY="52.0" prefHeight="21.0" prefWidth="140.0" text="Customer Name" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <Label fx:id="customerNameCardLabel" alignment="CENTER" layoutX="2.0" layoutY="52.0" prefHeight="21.0" prefWidth="140.0" styleClass="card-label" text="Customer Name" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <font>
             <Font size="15.0" />
          </font>

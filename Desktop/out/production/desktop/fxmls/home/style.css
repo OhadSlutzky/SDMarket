@@ -4,6 +4,14 @@
 -fx-text-fill : #000100;
 }
 
+.button-main-menu{
+    -fx-background-color: #FCF7F8;
+}
+
+#vbox-main-menu{
+    -fx-background-color: #FCF7F8;
+}
+
 .anchor-pane {
 -fx-border-color: #FFFFFF;
 -fx-background-color: #FFFFFF;
@@ -18,10 +26,13 @@
 -fx-background-color : #3EA372
 }
 
+.label-text{
+    -fx-text-fill: black;
+}
+
 .scroll-pane {
     -fx-background-color: #FFFFFF;
     -fx-border-color: #FFFFFF;
-
 }
 
 .scroll-bar:horizontal, .scroll-bar:vertical{
@@ -84,20 +95,28 @@
     -fx-background-radius: 10 10 10 10;
 }
 
-.accept-button:hover {
-    -fx-background-color : #4ABF50;
+#accept-button{
+    -fx-background-color:  #68CA6D;
 }
 
-.accept-button:pressed {
-    -fx-background-color : #4ABF50;
+#accept-button:hover {
+    -fx-background-color : #278a2c;
 }
 
-.reject-button:hover {
-    -fx-background-color : #E42535;
+#accept-button:pressed {
+    -fx-background-color : #9fcfa2;
 }
 
-.reject-button:pressed {
-    -fx-background-color : #E42535;
+#reject-button{
+    -fx-background-color:  #E84855;
+}
+
+#reject-button:hover {
+    -fx-background-color : #8d1821;
+}
+
+#reject-button:pressed {
+    -fx-background-color : #cb777e;
 }
 
 

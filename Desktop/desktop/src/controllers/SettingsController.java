@@ -24,6 +24,9 @@ public class SettingsController {
     private Button darkModeSkinButton;
 
     @FXML
+    private Button pinkModeSkinButton;
+
+    @FXML
     private Label activeSkinLabel;
 
     @FXML
@@ -51,7 +54,8 @@ public class SettingsController {
             case "Dark Mode":
                 setApplicationSkin("darkMode.css");
                 break;
-            default:
+            case "Pink Mode":
+                setApplicationSkin("pinkMode.css");
                 break;
         }
 

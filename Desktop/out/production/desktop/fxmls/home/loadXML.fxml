@@ -30,8 +30,8 @@
             </ProgressBar>
             <HBox prefHeight="17.0" prefWidth="546.0" spacing="20.0">
                <children>
-                  <Label prefHeight="17.0" prefWidth="55.0" text="File Path:" />
-                  <Label fx:id="pathToFileLabel" prefHeight="17.0" prefWidth="346.0" stylesheets="@style.css" text="-" />
+                  <Label prefHeight="17.0" prefWidth="55.0" styleClass="label-text" text="File Path:" />
+                  <Label fx:id="pathToFileLabel" prefHeight="17.0" prefWidth="346.0" styleClass="label-text" stylesheets="@style.css" text="-" />
                </children>
                <VBox.margin>
                   <Insets />
@@ -45,7 +45,7 @@
             <Insets top="10.0" />
          </padding>
       </VBox>
-      <HBox alignment="CENTER_LEFT" layoutX="193.0" layoutY="230.0" prefHeight="92.0" prefWidth="550.0" spacing="50.0">
+      <HBox alignment="CENTER_LEFT" layoutX="193.0" layoutY="200.0" prefHeight="92.0" prefWidth="550.0" spacing="50.0">
          <children>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                <children>
@@ -54,7 +54,7 @@
                         <Font name="System Bold" size="26.0" />
                      </font>
                   </Label>
-                  <Label text="Orders" textFill="#e7e5e5" />
+                  <Label styleClass="label-text" text="Orders" textFill="#e7e5e5" />
                </children>
             </VBox>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
@@ -64,7 +64,7 @@
                         <Font name="System Bold" size="26.0" />
                      </font>
                   </Label>
-                  <Label text="Customers" textFill="#e7e5e5" />
+                  <Label styleClass="label-text" text="Customers" textFill="#e7e5e5" />
                </children>
             </VBox>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
@@ -74,7 +74,7 @@
                         <Font name="System Bold" size="26.0" />
                      </font>
                   </Label>
-                  <Label text="Stores" textFill="#e7e5e5" />
+                  <Label styleClass="label-text" text="Stores" textFill="#e7e5e5" />
                </children>
             </VBox>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
@@ -84,12 +84,74 @@
                         <Font name="System Bold" size="26.0" />
                      </font>
                   </Label>
-                  <Label text="Items" textFill="#e7e5e5" />
+                  <Label styleClass="label-text" text="Items" textFill="#e7e5e5" />
                </children>
             </VBox>
          </children>
       </HBox>
-      <Separator layoutX="280.0" layoutY="213.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-      <AnchorPane fx:id="loadXMLMapAnchorPane" layoutX="2.0" layoutY="350.0" prefHeight="348.0" prefWidth="935.0" AnchorPane.leftAnchor="1.0" />
+      <Separator layoutX="2.0" layoutY="317.0" prefWidth="200.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0" />
+      <AnchorPane fx:id="loadXMLMapAnchorPane" layoutX="225.0" layoutY="330.0" prefHeight="350.0" prefWidth="700.0" />
+      <VBox fx:id="mapObjectInformationVBox" layoutX="7.0" layoutY="335.0" prefHeight="350.0" prefWidth="214.0" style="-fx-border-color: #2A73FF; -fx-border-radius: 10 10 10 10;">
+         <children>
+            <HBox prefHeight="134.0" prefWidth="244.0">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="134.0" prefWidth="118.0">
+                     <children>
+                        <Label fx:id="mapObjectChosenIdLabel" style="-fx-text-fill: #2a73ff;" text="-" textFill="#2a73ff">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Label>
+                        <Label styleClass="label-text" text="ID" textFill="#e7e5e5" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="134.0" prefWidth="136.0">
+                     <children>
+                        <Label fx:id="mapObjectChosenNameLabel" style="-fx-text-fill: #2a73ff;" text="-" textFill="#2a73ff">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Label>
+                        <Label styleClass="label-text" text="Name" textFill="#e7e5e5" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <HBox prefHeight="140.0" prefWidth="237.0">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="118.0">
+                     <children>
+                        <Label fx:id="mapObjectChosenAmountOrdersLabel" style="-fx-text-fill: #2a73ff;" text="-" textFill="#2a73ff">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Label>
+                        <Label styleClass="label-text" text="Orders" textFill="#e7e5e5" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="140.0" prefWidth="118.0">
+                     <children>
+                        <Label fx:id="mapObjectChosenLocationLabel" style="-fx-text-fill: #2a73ff;" text="-" textFill="#2a73ff">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Label>
+                        <Label styleClass="label-text" text="Location" textFill="#e7e5e5" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <VBox fx:id="mapPpkLabelsVBox" alignment="CENTER" prefHeight="67.0" prefWidth="244.0">
+               <children>
+                  <Label fx:id="mapObjectChosenPpkLabel" style="-fx-text-fill: #2a73ff;" text="-" textFill="#2a73ff">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label styleClass="label-text" text="PPK" textFill="#e7e5e5" />
+               </children>
+            </VBox>
+         </children>
+      </VBox>
    </children>
 </AnchorPane>

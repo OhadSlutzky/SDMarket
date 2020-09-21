@@ -28,6 +28,16 @@ public class Store {
         this.storeDiscounts = generateNewDiscountsMap(inputStore);
     }
 
+    public Store(int id, String name, int storePpk, Location storeLocation) {
+        this.Id = id;
+        this.name = name;
+        this.deliveryPpk = storePpk;
+        this.storeLocation = storeLocation;
+        this.itemsBeingSold = new HashMap<>();
+        this.storeDiscounts = new HashMap<>();
+        this.storeOrdersHistory = new ArrayList<>();
+    }
+
     private Map<Integer, List<Discount>> generateNewDiscountsMap(SDMStore inputStore) {
         Map<Integer, List<Discount>> discountsMap = new HashMap<>();
         Discount newDiscountToAdd;

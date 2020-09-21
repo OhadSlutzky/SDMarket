@@ -16,7 +16,7 @@
          <content>
             <AnchorPane prefHeight="692.0" prefWidth="175.0">
                <children>
-                  <VBox fx:id="storeCardsVBox" fillWidth="false" prefHeight="695.0" prefWidth="160.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <VBox fx:id="storeCardsVBox" fillWidth="false" prefHeight="695.0" prefWidth="160.0" spacing="20.0" styleClass="card-display" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <padding>
                         <Insets bottom="10.0" left="15.0" right="10.0" top="10.0" />
                      </padding>
@@ -62,7 +62,7 @@
                         <Font name="System Bold" size="26.0" />
                      </font>
                   </Label>
-                  <Label text="PPK" textFill="#e7e5e5" />
+                  <Label styleClass="label-text" text="PPK" textFill="#e7e5e5" />
                </children>
             </VBox>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
@@ -72,7 +72,7 @@
                         <Font name="System Bold" size="26.0" />
                      </font>
                   </Label>
-                  <Label text="Total Revenue" textFill="#e7e5e5" />
+                  <Label styleClass="label-text" text="Total Revenue" textFill="#e7e5e5" />
                </children>
             </VBox>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
@@ -82,7 +82,7 @@
                         <Font name="System Bold" size="26.0" />
                      </font>
                   </Label>
-                  <Label text="Sales Available" textFill="#e7e5e5" />
+                  <Label styleClass="label-text" text="Sales Available" textFill="#e7e5e5" />
                </children>
             </VBox>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
@@ -92,7 +92,7 @@
                         <Font name="System Bold" size="26.0" />
                      </font>
                   </Label>
-                  <Label text="Items" textFill="#e7e5e5" />
+                  <Label styleClass="label-text" text="Items" textFill="#e7e5e5" />
                </children>
             </VBox>
          </children>
@@ -102,17 +102,17 @@
             <Font size="40.0" />
          </font>
       </Label>
-      <Label layoutX="192.0" layoutY="129.0" text="Items ">
+      <Label layoutX="192.0" layoutY="129.0" styleClass="label-text" text="Items ">
          <font>
             <Font name="System Italic" size="15.0" />
          </font>
       </Label>
-      <Label layoutX="192.0" layoutY="312.0" text="Orders">
+      <Label layoutX="192.0" layoutY="312.0" styleClass="label-text" text="Orders">
          <font>
             <Font name="System Italic" size="15.0" />
          </font>
       </Label>
-      <Label layoutX="192.0" layoutY="498.0" text="Discounts">
+      <Label layoutX="192.0" layoutY="498.0" styleClass="label-text" text="Discounts">
          <font>
             <Font name="System Italic" size="15.0" />
          </font>
@@ -124,7 +124,7 @@
             <TableColumn fx:id="thenYouGetTableViewForAdditionalColumn" maxWidth="98.5" minWidth="98.5" prefWidth="98.5" style="-fx-alignment: CENTER;" text="For Additional" />
         </columns>
       </TableView>
-      <Label layoutX="633.0" layoutY="498.0" text="Offers">
+      <Label layoutX="633.0" layoutY="498.0" styleClass="label-text" text="Offers">
          <font>
             <Font name="System Italic" size="15.0" />
          </font>
