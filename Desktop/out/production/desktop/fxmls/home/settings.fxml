@@ -17,9 +17,9 @@
             <Button fx:id="pinkModeSkinButton" mnemonicParsing="false" onAction="#onActionSkinChange" prefHeight="40.0" prefWidth="160.0" text="Pink Mode" />
          </children>
       </HBox>
-      <CheckBox fx:id="enableAnimationsCheckBox" layoutX="188.5" layoutY="315.0" mnemonicParsing="false" onAction="#onActionEnableAnimationsCheckBox" text="Enable Animation">
+      <CheckBox fx:id="enableAnimationsCheckBox" layoutX="188.5" layoutY="315.0" mnemonicParsing="false" onAction="#onActionEnableAnimationsCheckBox" text="Enable Item Moving To Cart Animation">
          <font>
-            <Font name="System Bold" size="22.0" />
+            <Font name="System Bold" size="18.0" />
          </font>
       </CheckBox>
       <Separator layoutX="55.0" layoutY="265.0" prefHeight="0.0" prefWidth="837.0" AnchorPane.leftAnchor="40.0" />

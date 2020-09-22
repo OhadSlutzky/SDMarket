@@ -22,8 +22,8 @@ public class UpdateInformationController {
     private final String ADD_ITEM_TO_STORE = "Add Item To Store";
     private final String REMOVE_ITEM_FROM_STORE = "Remove Item From Store";
     private final String UPDATE_ITEM_PRICE = "Update Item Price In Store";
-    private final String ADD_NEW_STORE_TO_SYSTEM = "Add new store";
-    private final String ADD_NEW_ITEM_TO_SYSTEM = "Add new item";
+    private final String ADD_NEW_STORE_TO_SYSTEM = "Add New Store";
+    private final String ADD_NEW_ITEM_TO_SYSTEM = "Add New Item";
 
     private AppController mainController;
     private Store newlyAddedStore;
@@ -95,6 +95,9 @@ public class UpdateInformationController {
 
     @FXML
     private HBox inputNewObjectInformationHBox;
+
+    @FXML
+    private Button resetOperationButton;
 
 
     public void initializeChooseStoreComboBox(boolean isNewStore) {
@@ -288,7 +291,7 @@ public class UpdateInformationController {
                         displayVisualInvalidInput("are you serious?");
                     }
                 } else {
-                    displayVisualInvalidInput("no can do bro¯\\_(ツ)_/¯");
+                    displayVisualInvalidInput("no can do ¯\\_(ツ)_/¯");
                 }
             }
             else{ displayUpdateInformationError("You can not update an item that is not being sold by the store"); }
@@ -360,6 +363,9 @@ public class UpdateInformationController {
 
         String objectName;
         int objectId;
+
+        resetNewObjectTextFieldsBorder();
+
         if(this.chooseOperationComboBox.getSelectionModel().getSelectedItem().equals(ADD_NEW_STORE_TO_SYSTEM)){
             int storeXCoordinate;
             int storeYCoordinate;
@@ -385,7 +391,8 @@ public class UpdateInformationController {
                                     initializeAddItemToStoreSectionNewStore();
                                     disableNewObjectSectionAfterAddButtonPressed();
                                     initializeNewStoreComponents();
-                                    resetNewObjectTextFieldsBorderAndText();
+                                    resetNewObjectTextFieldsBorder();
+                                    resetNewObjectTextFieldsText();
                                 }
                                 else{
                                     this.addDynamicStoreLocationXTextField.clear();
@@ -416,7 +423,8 @@ public class UpdateInformationController {
                     newlyAddedStoreItem = new StoreItem(objectId, objectName, itemCategory);
                     initializeAddItemToStoreSectionNewItem();
                     disableNewObjectSectionAfterAddButtonPressed();
-                    resetNewObjectTextFieldsBorderAndText();
+                    resetNewObjectTextFieldsBorder();
+                    resetNewObjectTextFieldsText();
                 }
                 else{
                     this.addDynamicObjectNameTextField.clear();
@@ -427,22 +435,20 @@ public class UpdateInformationController {
         }
     }
 
-    private void resetNewObjectTextFieldsBorderAndText() {
+    private void resetNewObjectTextFieldsBorder() {
         this.addDynamicObjectIdTextField.setStyle("-fx-border-color: none");
-        this.addDynamicObjectIdTextField.clear();
-        //this.addDynamicObjectIdTextField.setPromptText("");
         this.addDynamicObjectNameTextField.setStyle("-fx-border-color: none");
-        this.addDynamicObjectNameTextField.clear();
-        //this.addDynamicObjectNameTextField.setPromptText("");
         this.addDynamicStorePpkTextField.setStyle("-fx-border-color: none");
-        this.addDynamicStorePpkTextField.clear();
-        //this.addDynamicStorePpkTextField.setPromptText("");
         this.addDynamicStoreLocationXTextField.setStyle("-fx-border-color: none");
-        this.addDynamicStoreLocationXTextField.clear();
-        //this.addDynamicStoreLocationXTextField.setPromptText("");
         this.addDynamicStoreLocationYTextField.setStyle("-fx-border-color: none");
+    }
+
+    private void resetNewObjectTextFieldsText(){
+        this.addDynamicObjectIdTextField.clear();
+        this.addDynamicObjectNameTextField.clear();
+        this.addDynamicStorePpkTextField.clear();
+        this.addDynamicStoreLocationXTextField.clear();
         this.addDynamicStoreLocationYTextField.clear();
-        //this.addDynamicStoreLocationYTextField.setPromptText("");
     }
 
     @FXML
@@ -572,8 +578,6 @@ public class UpdateInformationController {
                 alert.showAndWait();
             }
         }
-
-        resetUpdateInformationScene();
     }
 
     public void resetUpdateInformationScene() {
@@ -666,12 +670,14 @@ public class UpdateInformationController {
             else {
                 this.addDynamicStorePpkTextField.setPromptText("Must Be Positive");
                 this.addDynamicStorePpkTextField.setStyle("-fx-border-color: red");
+                this.addDynamicStorePpkTextField.clear();
                 return false;
             }
         }
         catch(Exception e){
             this.addDynamicStorePpkTextField.setPromptText("Not An Integer");
             this.addDynamicStorePpkTextField.setStyle("-fx-border-color: red");
+            this.addDynamicStorePpkTextField.clear();
             return false;
         }
     }
@@ -734,6 +740,11 @@ public class UpdateInformationController {
         catch(Exception e){
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    void onActionResetOperation() {
+        resetUpdateInformationScene();
     }
 
     private void loadItemsToSelectItemsComboBox(Collection<StoreItem> storeItems) {

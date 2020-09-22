@@ -26,6 +26,10 @@
 -fx-background-color : #3EA372
 }
 
+.combo-box-popup .list-view {
+    -fx-font-size: 11pt;
+}
+
 .label-text{
     -fx-text-fill: black;
 }

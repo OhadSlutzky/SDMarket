@@ -14,13 +14,13 @@
    <children>
       <VBox layoutX="170.0" layoutY="44.0" prefHeight="154.0" prefWidth="595.0" spacing="20.0" AnchorPane.leftAnchor="170.0">
          <children>
-            <HBox spacing="50.0">
+            <HBox prefHeight="31.0" prefWidth="423.0" spacing="50.0">
                <children>
-                  <Button fx:id="buttonChooseFile" alignment="CENTER" mnemonicParsing="false" onAction="#onActionChooseXMLFile" prefHeight="25.0" prefWidth="80.0" text="Choose File" />
-                  <Button fx:id="buttonLoadFile" alignment="CENTER" mnemonicParsing="false" onAction="#onActionLoadXML" prefHeight="25.0" prefWidth="80.0" text="Load File" />
+                  <Button fx:id="buttonChooseFile" alignment="CENTER" mnemonicParsing="false" onAction="#onActionChooseXMLFile" prefHeight="31.0" prefWidth="100.0" text="Choose File" />
+                  <Button fx:id="buttonLoadFile" alignment="CENTER" mnemonicParsing="false" onAction="#onActionLoadXML" prefHeight="31.0" prefWidth="100.0" text="Load File" />
                </children>
                <padding>
-                  <Insets left="192.5" />
+                  <Insets left="175.0" />
                </padding>
             </HBox>
             <ProgressBar fx:id="loadXMLProgressBar" prefHeight="18.0" prefWidth="290.0" progress="0.0">
@@ -30,7 +30,7 @@
             </ProgressBar>
             <HBox prefHeight="17.0" prefWidth="546.0" spacing="20.0">
                <children>
-                  <Label prefHeight="17.0" prefWidth="55.0" styleClass="label-text" text="File Path:" />
+                  <Label prefHeight="21.0" prefWidth="66.0" styleClass="label-text" text="File Path:" />
                   <Label fx:id="pathToFileLabel" prefHeight="17.0" prefWidth="346.0" styleClass="label-text" stylesheets="@style.css" text="-" />
                </children>
                <VBox.margin>

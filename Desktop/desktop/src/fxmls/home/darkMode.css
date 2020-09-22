@@ -14,6 +14,10 @@
     -fx-background-color: black;
 }
 
+.combo-box-popup .list-view {
+    -fx-font-size: 11pt;
+}
+
 .button-main-menu{
     -fx-background-color: #5b5a5a;
     -fx-text-fill: white;
@@ -24,20 +28,12 @@
 }
 
 .card-display{
-    -fx-background-color: #a8b7a8;
+    -fx-background-color: #acb0ac;
 }
-
-/*.text{*/
-/*    -fx-fill: white;*/
-/*}*/
 
 .check-box{
     -fx-text-fill: white;
 }
-
-/*.table-view{*/
-/*    -fx-background-color: black;*/
-/*}*/
 
 .anchor-pane {
     -fx-border-color: #39393b;
@@ -46,7 +42,8 @@
 
 .button:hover{
     -fx-background-color : #80CFA9;
-    -fx-text-fill : black;}
+    -fx-text-fill : black;
+}
 
 .button:pressed
 {
@@ -54,8 +51,8 @@
 }
 
 .scroll-pane {
-    -fx-background-color: #FFFFFF;
-    -fx-border-color: #FFFFFF;
+    -fx-background-color: #39393b;
+    -fx-border-color: #39393b;
 }
 
 .table-view{

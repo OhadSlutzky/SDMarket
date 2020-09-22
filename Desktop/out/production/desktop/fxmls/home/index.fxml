@@ -9,10 +9,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<ScrollPane fitToHeight="true" fitToWidth="true" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AppController">
-   <content>
-      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1250.0">
-         <children>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="710.0" prefWidth="1250.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AppController">
+   <children>
+      <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="710.0" prefWidth="302.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <content>
             <VBox id="vbox-main-menu" alignment="TOP_CENTER" prefHeight="700.0" prefWidth="300.0">
                <children>
                   <ImageView fitHeight="123.0" fitWidth="286.0" pickOnBounds="true" preserveRatio="true" smooth="false">
@@ -127,11 +128,15 @@
                   </Button>
                </children>
             </VBox>
-            <AnchorPane id="anchorPaneMainWindow" fx:id="anchorPaneMainWindow" layoutX="300.0" prefHeight="700.0" prefWidth="935.0" styleClass="anchor-pane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="0.0" />
-         </children>
-         <effect>
-            <DropShadow color="#1b1eeb" />
-         </effect>
-      </AnchorPane>
-   </content>
-</ScrollPane>
+         </content>
+      </ScrollPane>
+      <ScrollPane fitToHeight="true" fitToWidth="true" layoutX="300.0" prefHeight="700.0" prefWidth="950.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <content>
+            <AnchorPane id="anchorPaneMainWindow" fx:id="anchorPaneMainWindow" prefHeight="700.0" prefWidth="935.0" styleClass="anchor-pane" />
+         </content>
+      </ScrollPane>
+   </children>
+   <effect>
+      <DropShadow color="#1b1eeb" />
+   </effect>
+</AnchorPane>

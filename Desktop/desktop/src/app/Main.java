@@ -16,11 +16,11 @@ public class Main extends Application {
         FXMLLoader loader = new FXMLLoader();
         URL mainFXML = getClass().getResource("/fxmls/home/index.fxml");
         loader.setLocation(mainFXML);
-        ScrollPane root = loader.load();
+        Pane root = loader.load();
         AppController appController = loader.getController();
         appController.setMainStage(primaryStage);
         primaryStage.setTitle("SDMarket");
-        Scene scene = new Scene(root, 1253, 715);
+        Scene scene = new Scene(root, 1245, 710);
         scene.getStylesheets().add("/fxmls/home/style.css");
         primaryStage.setScene(scene);
         primaryStage.show();

@@ -69,9 +69,6 @@ public class OrdersHistoryController {
     private TableColumn<Order, Integer> ordersHistoryDynamicOrdersTableViewStoresParticipatingColumn;
 
     @FXML
-    private TableColumn<Order, String> ordersHistoryDynamicOrdersTableViewStoreNameColumn;
-
-    @FXML
     private TableColumn<Order, Integer> ordersHistoryDynamicOrdersTableViewTotalTypesColumn;
 
     @FXML
@@ -133,7 +130,6 @@ public class OrdersHistoryController {
         this.ordersHistoryDynamicOrdersTableViewIdColumn.setCellValueFactory(new PropertyValueFactory<>("orderId"));
         this.ordersHistoryDynamicOrdersTableViewDateColumn.setCellValueFactory(new PropertyValueFactory<>("dateOrderWasMade"));
         this.ordersHistoryDynamicOrdersTableViewStoresParticipatingColumn.setCellValueFactory(new PropertyValueFactory<>("amountOfStoresRelatedToOrder"));
-        this.ordersHistoryDynamicOrdersTableViewStoreNameColumn.setCellValueFactory(new PropertyValueFactory<>("storeName"));
         this.ordersHistoryDynamicOrdersTableViewTotalTypesColumn.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getNumberOfItemsTypesInOrder()));
         this.ordersHistoryDynamicOrdersTableViewTotalItemsColumn.setCellValueFactory(new PropertyValueFactory<>("amountItemsInOrder"));
         this.ordersHistoryDynamicOrdersTableViewItemsCostColumn.setCellValueFactory(new PropertyValueFactory<>("costOfItemsInOrder"));

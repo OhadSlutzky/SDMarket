@@ -27,15 +27,15 @@
       </ScrollPane>
       <TableView fx:id="customerOrdersTableView" layoutX="262.0" layoutY="203.0" prefHeight="344.0" prefWidth="595.0" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="80.0">
          <columns>
-            <TableColumn fx:id="ordersTableViewIdColumn" minWidth="100.0" prefWidth="100.0" style="-fx-alignment: CENTER;" text="ID" />
-            <TableColumn fx:id="ordersTableViewDateColumn" minWidth="100.0" prefWidth="100.0" style="-fx-alignment: CENTER;" text="Date" />
-            <TableColumn fx:id="ordersTableViewTotalItemsColumn" minWidth="100.0" prefWidth="100.0" style="-fx-alignment: CENTER;" text="Total Items" />
-            <TableColumn fx:id="ordersTableViewTotalItemsPriceColumn" minWidth="100.0" prefWidth="100.0" style="-fx-alignment: CENTER;" text="Total Items Price" />
-            <TableColumn fx:id="ordersTableViewDeliveryCostColumn" minWidth="100.0" prefWidth="100.0" style="-fx-alignment: CENTER;" text="Delivery Cost" />
-            <TableColumn fx:id="ordersTableViewTotalPriceColumn" minWidth="100.0" prefWidth="100.0" style="-fx-alignment: CENTER;" text="Total Price" />
+            <TableColumn fx:id="ordersTableViewIdColumn" minWidth="49.0" prefWidth="49.0" style="-fx-alignment: CENTER;" text="ID" />
+            <TableColumn fx:id="ordersTableViewDateColumn" minWidth="96.0" prefWidth="96.0" style="-fx-alignment: CENTER;" text="Date" />
+            <TableColumn fx:id="ordersTableViewTotalItemsColumn" minWidth="87.0" prefWidth="87.0" style="-fx-alignment: CENTER;" text="Total Items" />
+            <TableColumn fx:id="ordersTableViewTotalItemsPriceColumn" minWidth="100.0" prefWidth="149.0" style="-fx-alignment: CENTER;" text="Total Items Price" />
+            <TableColumn fx:id="ordersTableViewDeliveryCostColumn" minWidth="100.0" prefWidth="104.0" style="-fx-alignment: CENTER;" text="Delivery Cost" />
+            <TableColumn fx:id="ordersTableViewTotalPriceColumn" minWidth="89.0" prefWidth="89.0" style="-fx-alignment: CENTER;" text="Total Price" />
          </columns>
       </TableView>
-      <HBox alignment="CENTER_LEFT" layoutX="211.0" layoutY="44.0" prefHeight="92.0" prefWidth="625.0" spacing="50.0" AnchorPane.leftAnchor="245.0" AnchorPane.rightAnchor="65.0" AnchorPane.topAnchor="75.0">
+      <HBox alignment="CENTER_LEFT" layoutX="232.0" layoutY="82.0" prefHeight="92.0" prefWidth="672.0" spacing="20.0" AnchorPane.leftAnchor="222.5" AnchorPane.rightAnchor="32.0" AnchorPane.topAnchor="81.0">
          <children>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                <children>
@@ -47,27 +47,27 @@
                   <Label styleClass="label-text" text="Location" textFill="#e7e5e5" />
                </children>
             </VBox>
-            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+            <VBox alignment="CENTER" prefHeight="92.0" prefWidth="168.0">
                <children>
                   <Label fx:id="numberOfOrdersLabel" style="-fx-text-fill: #26bfbc;" text="0" textFill="#26bfbc">
                      <font>
                         <Font name="System Bold" size="26.0" />
                      </font>
                   </Label>
-                  <Label styleClass="label-text" text="Number Of Orders" textFill="#e7e5e5" />
+                  <Label prefHeight="21.0" prefWidth="130.0" styleClass="label-text" text="Number Of Orders" textFill="#e7e5e5" />
                </children>
             </VBox>
-            <VBox alignment="CENTER" prefHeight="92.0" prefWidth="136.0">
+            <VBox alignment="CENTER" prefHeight="92.0" prefWidth="221.0">
                <children>
                   <Label id="salesAvailableLabel" fx:id="averagePriceOfDeliveryLabel" style="-fx-text-fill: #fa5f7e;" text="0" textFill="#fa5f7e">
                      <font>
                         <Font name="System Bold" size="26.0" />
                      </font>
                   </Label>
-                  <Label prefHeight="17.0" prefWidth="135.0" styleClass="label-text" text="Average Price Of Delivery" textFill="#e7e5e5" />
+                  <Label prefHeight="21.0" prefWidth="179.0" styleClass="label-text" text="Average Price Of Delivery" textFill="#e7e5e5" />
                </children>
             </VBox>
-            <VBox alignment="CENTER" prefHeight="92.0" prefWidth="119.0">
+            <VBox alignment="CENTER" prefHeight="92.0" prefWidth="187.0">
                <children>
                   <Label id="itemsLabel" fx:id="averageCartPriceLabel" style="-fx-text-fill: #de0000;" text="0" textFill="#de0000">
                      <font>
